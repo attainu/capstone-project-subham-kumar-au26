@@ -1,0 +1,23 @@
+{
+  "name": "from-anywhere",
+  "version": "1.0.0",
+  "description": "Buy product from anywhere with global delivery services",
+  "main": "backend/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/subham-kumar-au26"
+  },
+  "author": "Subham Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.6",
+    "nodemon": "^2.0.16"
+  }
+}
