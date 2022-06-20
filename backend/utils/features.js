@@ -23,13 +23,13 @@ class ApiFeatures {
         // Remove other fields instead of category
         const removeFields = ['keyword','page','limit'];
 
-        removeFields.forEach(key=>delete queryCopy[key]);
+        removeFields.forEach((key) => delete queryCopy[key]);
 
         // filter with price range with mongo aggregation key $gt & $lt
         let queryStr = JSON.stringify(queryCopy);
-        queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, key => `$${key}`);
+        queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
 
-        this.query = this.query.find(JSON.parse(queryCopy));
+        this.query = this.query.find(JSON.parse(queryStr));
         return this;
     }
 
@@ -39,7 +39,7 @@ class ApiFeatures {
         const skip = resultPerPage * (currentPage - 1);
 
         this.query = this.query.limit(resultPerPage).skip(skip);
-        return this
+        return this;
     }
 }; 
 

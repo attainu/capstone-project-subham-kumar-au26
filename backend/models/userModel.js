@@ -32,12 +32,16 @@ const userSchema = new mongoose.Schema({
             required: true
         }
     },
-    role:{
-        type:String,
-        default:"user"
+    role: {
+        type: String,
+        default: "user"
     },
-    resetPasswordToken:String,
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+    resetPasswordToken: String,
     resetPasswordExpire: Date
 })
 
-module.exports = mongoose.model('user', userSchema)
+module.exports = mongoose.model('User', userSchema)
