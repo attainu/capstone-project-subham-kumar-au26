@@ -6,6 +6,6 @@
 /backend/config/config.env
 
 #rest 
-/product.rest
-/user.rest
+/backend/product.rest
+/backend/user.rest
 
