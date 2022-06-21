@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const errorMiddelware = require('./middleware/error')
 
-// const path = require('path');
+const path = require('path');
 
 app.use(express.json())
 
