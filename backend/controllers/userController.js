@@ -84,36 +84,36 @@ exports.forgotPassword = catchAsyncError(async (req, res, next) => {
 
     // Gert reset password token 
 
-     const resetToken = user.getResetPasswordToken();
+    const resetToken = user.getResetPasswordToken();
 
-     await user.save({validateBeforeSave: false});
+    await user.save({ validateBeforeSave: false });
 
-     const resetPasswordUrl = `${req.protocol}://${req.get('host')}/api/v1/password/reset/${resetToken}`
+    const resetPasswordUrl = `${req.protocol}://${req.get('host')}/api/v1/password/reset/${resetToken}`
 
-     const message = `please click on below button for password reset:- \n\n ${resetPasswordUrl}`
+    const message = `please click on below button for password reset:- \n\n ${resetPasswordUrl}`
 
-     try {
+    try {
 
         await sendEmail({
 
-            email:user.email,
-            subject:`Ecommerce password Recovery`,
+            email: user.email,
+            subject: `Ecommerce password Recovery`,
             message,
 
         });
 
         res.status(200).json({
-            success:true,
-            message:`Email sent to ${user.email} successfully`,
+            success: true,
+            message: `Email sent to ${user.email} successfully`,
 
-     })
-        
-     } catch (error) {
+        })
+
+    } catch (error) {
         user.resetPasswordToken = undefined;
         user.resetPasswordExpire = undefined;
 
-        await user.save({validateBeforeSave: false});
+        await user.save({ validateBeforeSave: false });
 
         return next(new ErrorHandler(error.message, 500))
-     }
+    }
 });
