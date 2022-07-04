@@ -18,7 +18,7 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: [true, "please pro valid category"]
     },
-    rating: {
+    ratings: {
         type: Number,
         default: 0
     },
