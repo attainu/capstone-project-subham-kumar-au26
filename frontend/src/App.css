@@ -1,6 +1,5 @@
 * {
   margin: 0;
-  /* scroll-behavior: smooth; */
 }
 
 body {
@@ -15,9 +14,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-/* input[type="number"] {
-  -moz-appearance: textfield;
-} */
+
 
 .greenColor {
   color: green !important;
