@@ -3,7 +3,7 @@ const Product = require("../models/productModel");
 const ErrorHander = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncError");
 
-// Create new Order
+/*<--New Order-->*/
 exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     const {
         shippingInfo,
@@ -33,7 +33,7 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     });
 });
 
-// get Single Order
+/*<--Single Order-->*/
 exports.getSingleOrder = catchAsyncErrors(async (req, res, next) => {
     const order = await Order.findById(req.params.id).populate(
         "user",
@@ -50,7 +50,7 @@ exports.getSingleOrder = catchAsyncErrors(async (req, res, next) => {
     });
 });
 
-// get logged in user  Orders
+/*<--User Order-->*/
 exports.myOrders = catchAsyncErrors(async (req, res, next) => {
     const orders = await Order.find({ user: req.user._id });
 
@@ -60,7 +60,7 @@ exports.myOrders = catchAsyncErrors(async (req, res, next) => {
     });
 });
 
-// get all Orders -- Admin
+/*<--Admin all order-->*/
 exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
     const orders = await Order.find();
 
@@ -77,7 +77,7 @@ exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
     });
 });
 
-// update Order Status -- Admin
+/*<--Admin update order-->*/
 exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
     const order = await Order.findById(req.params.id);
 
@@ -114,7 +114,7 @@ async function updateStock(id, quantity) {
     await product.save({ validateBeforeSave: false });
 }
 
-// delete Order -- Admin
+/*<--Admin Delete Order-->*/
 exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
     const order = await Order.findById(req.params.id);
 
